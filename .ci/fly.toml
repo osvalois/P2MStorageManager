@@ -1,0 +1,26 @@
+# fly.toml app configuration file generated for p2mstoragemanager on 2025-03-17T21:59:03-06:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'p2mstoragemanager'
+primary_region = 'qro'
+
+[build]
+
+[[mounts]]
+  source = 'srv'
+  destination = '/srv'
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '4gb'
+  cpu_kind = 'shared'
+  cpus = 2
